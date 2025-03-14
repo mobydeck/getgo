@@ -9,7 +9,8 @@ A command-line tool for downloading, installing, and managing Go versions across
 `getgo` simplifies the process of downloading and setting up Go environments on Linux, macOS, and Windows. It allows you to:
 
 - Download any version of Go (including the latest)
-- Extract it to a specified location
+- Extract it to a specified location (install_path)
+- Set GOROOT to the versioned Go directory (install_path/go[version])
 - Automatically set up the necessary environment variables (optional)
 - Customize your GOPATH location
 - Create a `.envrc` file for use with direnv
@@ -150,16 +151,16 @@ The following environment variables are set up by `getgo` when using the `-u` fl
 ### Linux/macOS
 
 ```
-export GOROOT=/path/to/go/installation
-export GOPATH=/path/to/custom/gopath  # Customizable with --path flag
+export GOROOT=/install_path/go[version]  # e.g., /home/user/.go/go1.23.1
+export GOPATH=/path/to/custom/gopath     # Customizable with --path flag
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 ```
 
 ### Windows
 
 ```
-GOROOT=C:\path\to\go\installation
-GOPATH=C:\path\to\custom\gopath  # Customizable with --path flag
+GOROOT=C:\install_path\go[version]       # e.g., C:\Users\user\.go\go1.23.1
+GOPATH=C:\path\to\custom\gopath          # Customizable with --path flag
 PATH=%PATH%;%GOPATH%\bin;%GOROOT%\bin
 ```
 
@@ -168,10 +169,11 @@ PATH=%PATH%;%GOPATH%\bin;%GOROOT%\bin
 1. Determines the appropriate Go version to download (latest or specified)
 2. Checks if the version already exists at the destination
 3. Downloads the appropriate archive for your OS and architecture
-4. Extracts the archive to the specified location
-5. Sets up the directory structure with versioned Go installations
-6. Optionally configures environment variables in your shell configuration files (with `-u` flag)
-7. Optionally creates or updates a `.envrc` file for use with direnv (with `--envrc` flag), preserving existing content
+4. Extracts the archive to the specified installation directory
+5. Sets up the directory structure with versioned Go installations (e.g., install_path/go1.23.1)
+6. Sets GOROOT to point to the versioned Go directory (install_path/go[version])
+7. Optionally configures environment variables in your shell configuration files (with `-u` flag)
+8. Optionally creates or updates a `.envrc` file for use with direnv (with `--envrc` flag), preserving existing content
 
 ## License
 
