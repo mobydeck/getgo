@@ -6,7 +6,8 @@ A command-line tool for downloading, installing, and managing Go versions across
 
 ## Overview
 
-`getgo` simplifies the process of downloading and setting up Go environments on Linux, macOS, and Windows. It allows you to:
+`getgo` simplifies the process of downloading and setting up Go environments on Linux, macOS, and Windows.
+It allows you to:
 
 - Download any version of Go (including the latest)
 - Extract it to a specified location (install_path)
@@ -113,7 +114,8 @@ getgo [options] [version] [install_path]
 
 ## Automatic Environment Setup
 
-By default, `getgo` will not modify your environment variables. If you want to automatically set up the required environment variables, use the `-u` or `--unattended` flag:
+By default, `getgo` will not modify your environment variables. If you want to automatically set up the required
+environment variables, use the `-u` or `--unattended` flag:
 
 ### On Linux/macOS
 
@@ -129,7 +131,8 @@ By default, `getgo` will not modify your environment variables. If you want to a
 
 ## Using with direnv
 
-If you prefer to use [direnv](https://direnv.net/) to manage your environment variables, you can use the `--envrc` flag to create or update a `.envrc` file:
+If you prefer to use [direnv](https://direnv.net/) to manage your environment variables, you can use the `--envrc` flag
+to create or update a `.envrc` file:
 
 ```
 getgo --envrc .
